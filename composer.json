@@ -1,0 +1,24 @@
+{
+    "name": "rabbitcms/themes",
+    "description": "Theme support for RabbitCMS modules.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kulyk Dmytro",
+            "email": "lnkvisitor.ts@gmail.com"
+        }
+    ],
+    "require": {
+        "rabbitcms/modules": "^0.1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "RabbitCMS\\Themes\\": "./"
+        }
+    },
+    "extra": {
+        "module": {
+            "providers": "RabbitCMS\\Themes\\ModuleProvider"
+        }
+    }
+}
