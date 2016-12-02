@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class ThemesFacade.
  */
-class ThemesFacade extends Facade {
-
+class ThemesFacade extends Facade
+{
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor()
+    {
+        return 'themes';
+    }
 }
