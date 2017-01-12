@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RabbitCMS\\Themes\\": "./"
+            "RabbitCMS\\Themes\\": "src/"
         }
     },
     "extra": {
