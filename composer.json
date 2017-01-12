@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "rabbitcms/modules": "^0.1.9"
+        "rabbitcms/modules": "^1.1"
     },
     "autoload": {
         "psr-4": {
