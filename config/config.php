@@ -1,6 +1,9 @@
 <?php
 declare(strict_types = 1);
 return [
-    'path' => 'resources/themes',
-    'theme' => env('THEME', 'default')
+    'paths' => [
+        base_path('themes')
+    ],
+    'theme' => env('THEME', 'default'),
+    'assets'=>'themes'
 ];
