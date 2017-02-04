@@ -64,7 +64,6 @@ class ModuleProvider extends BaseModuleProvider
      */
     public function boot(Modules $modules, Factory $view, Themes $themes)
     {
-
         $theme = $this->module->config('theme', 'default');
         if (!$themes->has($theme)) {
             return;
@@ -82,7 +81,7 @@ class ModuleProvider extends BaseModuleProvider
         $path = $theme->getPath();
         if (is_dir($path)) {
             $modules->enabled()->each(function (PackageContract $module) use ($theme, $view) {
-                $modulePath = $theme->getPath("{$module->getName()}/views");
+                $modulePath = $theme->getPath("views/{$module->getName()}");
                 if (is_dir($modulePath)) {
                     $view->prependNamespace($module->getName(), [$modulePath]);
                 }

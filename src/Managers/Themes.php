@@ -37,7 +37,7 @@ class Themes implements PackagesManager
      * @param array $composer
      * @return null|Theme
      */
-    protected function checkPackage(SplFileInfo $file, array $composer)
+    protected function checkPackage(string $dir, array $composer)
     {
         if (empty($composer['extra']['theme']) || !is_array($composer['extra']['theme'])) {
             return null;
@@ -49,7 +49,7 @@ class Themes implements PackagesManager
         }
 
         $theme['description'] = array_key_exists('description', $composer) ? $composer['description'] : '';
-        $theme['path'] = $file->getPathname();
+        $theme['path'] = $dir;
         $theme = new Theme($theme);
 
         $this->updateLink(
