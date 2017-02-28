@@ -4,6 +4,6 @@ return [
     'paths' => [
         base_path('themes/*')
     ],
-    'theme' => env('THEME', 'default'),
+    'theme' => env('THEME'),
     'assets'=>'themes'
 ];

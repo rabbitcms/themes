@@ -31,16 +31,14 @@ class Theme implements PackageContract
     protected $description;
 
     /**
-     * Module enabled.
-     *
-     * @var bool
+     * @var string|null
      */
-    protected $enabled;
+    protected $extends = null;
 
     /**
      * @var bool
      */
-    protected $system;
+    protected $enabled = true;
 
     /**
      * Module constructor.
@@ -52,8 +50,7 @@ class Theme implements PackageContract
         $this->path = $options['path'];
         $this->name = array_key_exists('name', $options) ? $options['name'] : basename($this->path);
         $this->description = array_key_exists('description', $options) ? $options['description'] : '';
-        $this->enabled = array_key_exists('enabled', $options) ? $options['enabled'] : true;
-        $this->system = array_key_exists('system', $options) ? $options['system'] : false;
+        $this->extends = array_key_exists('extends', $options) ? $options['extends'] : null;
     }
 
     /**
@@ -64,6 +61,18 @@ class Theme implements PackageContract
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * Get module path.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    public function getPath(string $path = ''): string
+    {
+        return $this->path . ($path ? '/' . $path : '');
     }
 
     /**
@@ -85,26 +94,6 @@ class Theme implements PackageContract
     }
 
     /**
-     * @return bool
-     */
-    public function isSystem(): bool
-    {
-        return $this->system;
-    }
-
-    /**
-     * Get module path.
-     *
-     * @param string $path
-     *
-     * @return string
-     */
-    public function getPath(string $path = ''): string
-    {
-        return $this->path . ($path ? '/' . $path : '');
-    }
-
-    /**
      * @inheritdoc
      */
     public function toArray()
@@ -113,8 +102,7 @@ class Theme implements PackageContract
             'path' => $this->path,
             'name' => $this->name,
             'description' => $this->description,
-            'enabled' => $this->enabled,
-            'system' => $this->system,
+            'extends' => $this->extends
         ];
     }
 
@@ -123,16 +111,24 @@ class Theme implements PackageContract
      *
      * @return string
      */
-    public function getDescription():string
+    public function getDescription(): string
     {
         return $this->description;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getExtends()
+    {
+        return $this->extends;
     }
 
     /**
      * Get the specified configuration value.
      *
      * @param  string $key
-     * @param  mixed $default
+     * @param  mixed  $default
      *
      * @return mixed
      */

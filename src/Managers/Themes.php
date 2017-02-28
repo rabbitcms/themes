@@ -33,7 +33,7 @@ class Themes implements PackagesManager
     }
 
     /**
-     * @param SplFileInfo $file
+     * @param string $dir
      * @param array $composer
      * @return null|Theme
      */
