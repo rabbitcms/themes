@@ -87,6 +87,13 @@ class ModuleProvider extends BaseModuleProvider
         foreach (array_reverse($foundThemes) as $theme) {
             $path = $theme->getPath();
             if (is_dir($path)) {
+                $app = $theme->getPath('views/app');
+                if (is_dir($app)) {
+                    $finder = $view->getFinder();
+                    if (method_exists($finder, 'prependLocation')) {
+                        $finder->prependLocation($app);
+                    }
+                }
                 $modules->enabled()->each(function (PackageContract $module) use ($theme, $view) {
                     $modulePath = $theme->getPath("views/{$module->getName()}");
                     if (is_dir($modulePath)) {
