@@ -2,11 +2,10 @@
 declare(strict_types=1);
 namespace RabbitCMS\Themes\Managers;
 
-use RabbitCMS\Modules\Contracts\PackagesManager;
 use RabbitCMS\Modules\Contracts\PackageContract;
+use RabbitCMS\Modules\Contracts\PackagesManager;
 use RabbitCMS\Modules\Managers\ManagerImpl;
 use RabbitCMS\Themes\Theme;
-use SplFileInfo;
 
 /**
  * Class Themes.
@@ -37,7 +36,7 @@ class Themes implements PackagesManager
      * @param array $composer
      * @return null|Theme
      */
-    protected function checkPackage(string $dir, array $composer)
+    protected function checkPackage(string $dir, ?array $composer)
     {
         if (empty($composer['extra']['theme']) || !is_array($composer['extra']['theme'])) {
             return null;

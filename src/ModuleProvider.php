@@ -17,14 +17,6 @@ use RabbitCMS\Themes\Managers\Themes as ThemesManager;
  */
 class ModuleProvider extends BaseModuleProvider
 {
-    /**
-     * @return string
-     */
-    public function name(): string
-    {
-        return 'themes';
-    }
-
     public function register()
     {
         parent::register();
@@ -66,7 +58,7 @@ class ModuleProvider extends BaseModuleProvider
      */
     public function boot(Modules $modules, Factory $view, Themes $themes)
     {
-        $themeName = $this->module->config('theme');
+        $themeName =self::module()->config('theme');
         $foundThemes = [];
         while ($themeName !== null && $themes->has($themeName)) {
             /* @var Theme $theme */
